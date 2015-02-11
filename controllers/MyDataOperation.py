@@ -1,12 +1,9 @@
 import MySQLdb
+import os
 
 class MyDataOperation:
     def __init__(self):
-        self.server = "127.0.0.1"
-        self.port   = "3306"
-        self.name   = "root"
-        self.password = ""
-        sel.conn = MySQLdb.connect(server,name,password)
+        pass
     def Add(self):
         self.beforeAdd()
         self.addData(conn)
@@ -49,3 +46,4 @@ class MyDataOperation:
         pass
     def afterSelect(self):
         pass
+        
