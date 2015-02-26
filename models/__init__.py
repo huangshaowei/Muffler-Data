@@ -1,8 +1,9 @@
 from .carModels import *
 from .projectModels import *
 from .databaseModels import *
+from .userModels import *
 
-Models=[CarModels,Project]
+Models=[Users,CarModels,Projects]
 
 ################class MyModels manager the Models' establish and use ############
 class ModelsManager:

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<database name = "mysqldata" server="localhost" username="root" password="">
+<table name="models">
+<field type="varchar(30) primary key">车型编号</field>
+<field type="varchar(30) not null">车型名称 </field>
+<field type="varchar(20)">车辆类别 </field>
+<field type="varchar(20)">驱动型式</field>
+<field type="varchar(30)">变速箱型式</field>
+<field type="varchar(30)">转向系统型式</field>
+<field type="varchar(30)">制动系统型式</field>
+<field type="varchar(30)">消声器布局型式</field>
+<field type="varchar(20)">排放标准</field>
+<field type="varchar(10)">长\宽\高(mm)</field>  
+<field type="varchar(10)">轴距(mm)</field>
+<field type="varchar(10)">轮距(mm)</field>
+</table>
+<table name="engines">
+<field type="varchar(30) primary key">发动机型号</field>
+<field type="numeric(6,4)">发动机排量(L)</field>
+<field type="smallint(6)">气缸数(个)</field>
+<field type="varchar(20)">气缸排列方式</field>
+<field type="varchar(20)">吸气方式</field>
+<field type="varchar(20)">配气方式</field>
+<field type="varchar(20)">增压方式</field>
+<field type="varchar(20)">冷却方式</field>
+<field type="numeric(6,4)">压缩比</field>
+<field type="int(11)">标定转速(rpm)</field>
+<field type="varchar(30)">生产厂家名称</field>
+<field type="numeric(8,4)">活塞行程(mm)</field>
+<field type="numeric(8,4)">气缸直径(mm)</field>
+<field type="int(11)">怠速时的转速(rpm)</field>
+<field type="numeric(8,4)">最大功率(KW)</field>
+<field type="numeric(8,4)">最大扭矩(Nm)</field>
+<field type="numeric(8,4)">最高气体温度(C)</field>
+<field type="int(11)">最高气体温度下的转速(rpm)</field>
+<field type="numeric(8,4)">最大气流质量流量(g/s)</field>
+<field type="int(11)">最大气流流量下的转速(rpm)</field>
+<field type="int(11)">最低油耗点(rpm)</field>
+<field type="int(11)">最大扭矩点(rpm)</field>
+<field type="int(11)">最大功率点(rpm)</field>
+<field type="varchar(5)">EGR</field>
+<field type="varchar(30)">厂家地址</field>
+<field type="varchar(20)">厂家电话</field>
+<field type="varchar(30)">厂家电子邮箱</field>
+</table>
+<table name="employees">
+<field type="int primary key auto_increment">员工编号</field>
+<field type="varchar(20)">员工姓名</field>
+<field type="varchar(20)">员工部门</field>
+<field type="varchar(20)">员工职务</field>
+<field type="varchar(20)">员工联系方式</field>
+<field type="varchar(20)">员工电子邮箱</field>
+</table>
+<table name="catalysts">
+<field type="varchar(20) primary key">催化器编号</field>
+<field type="varchar(20)">材料</field>
+<field type="varchar(20)">截面积</field>
+<field type="longblob">尺寸信息图</field>
+<field type="longblob">实体图</field>
+<field type="longblob">GT图</field>
+<field type="longblob">三维(UG)模型</field>
+</table>
+<table name = "projects">
+<field type="varchar(30) not null primary key">项目编号</field>
+<field type="varchar(20) not null">项目名称</field>
+<field type="varchar(20)">车型编号</field>
+<field type="varchar(20)">发动机型号</field>
+<field type="int">项目负责人编号</field>
+<field type="varchar(20)">录入人</field>
+<field type="datetime">录入时间</field>
+<field type="longblob">SOR</field>
+<field type="longblob">GT模型</field>
+</table>
+<table name = "exhausts">
+<field type="varchar(20) not null primary key">排气歧管编号</field>
+<field type="varchar(20)">材料</field>
+<field type="varchar(20)">类型</field>
+<field type="longblob">实体图</field>
+<field type="longblob">GT图</field>
+<field type="longblob">三维(UG)数模</field>
+</table>
+<table name="mufflers">
+<field type="varchar(30) not null primary key"> 消声器编号</field>
+<field type="tinyint(3)"> 腔的数量</field>
+<field type="varchar(10)"> 消声器类型</field>
+<field type="numeric(6,4)"> 消声器容积(L)</field>
+<field type="numeric(10,2)">截面面积(mm2)</field>
+<field type="varchar(20)">截面形状</field>
+<field type="longblob">尺寸标注图</field>
+<field type="varchar(20)">形状参数一</field>
+<field type="numeric(8,4)">参数值一</field>
+<field type="varchar(20)">形状参数二</field>
+<field type="numeric(8,4)">参数值二</field>
+<field type="varchar(20)">形状参数三</field>
+<field type="numeric(8,4)">参数值三</field>
+<field type="varchar(20)"> 形状参数四</field>
+<field type="numeric(8,4)"> 参数值四</field>
+<field type="varchar(20)"> 形状参数五</field>
+<field type="numeric(8,4)">参数值五</field>
+<field type="longblob"> 实体图1</field>
+<field type="longblob">实体图2</field>
+<field type="longblob"> GT图1</field>
+<field type="longblob"> GT图2</field>
+<field type="longblob">传递损失实验测试图片1</field>
+<field type="longblob">传递损失实验测试图片2</field>
+<field type="longblob">CAD图</field>
+<field type="longblob">三维(GT)模型</field>
+<field type="longblob">三维(UG)模型</field>
+<field type="varchar(500)">备注</field>
+</table>
+<table name="pictures">
+<field type="varchar(20)">消声器类型</field>
+<field type="longblob">图片</field>
+</table>
+<table name="plans">
+<field type="varchar(20) not null">项目编号</field>
+<field type="varchar(20) not null">方案编号</field>
+<field type="varchar(30) not null primary key">子方案编号</field>
+<field type="varchar(20)">子方案名称</field>
+<field type="varchar(20)">排气歧管编号</field>
+<field type="varchar(20)">催化器编号</field>
+<field type="varchar(20)">消声器1编号</field>
+<field type="varchar(20)">消声器2编号</field>
+<field type="varchar(20)">消声器3编号</field>
+<field type="varchar(20)">消声器4编号</field>
+<field type="varchar(10)">方案设计人姓名</field>
+<field type="longblob">测试结果</field>
+<field type="longblob">分析结果</field>
+</table>
+<table name="data">
+<field type="varchar(30)">消声器编号</field>
+<field type="int(11)">频率</field>
+<field type="numeric(9,5)">FREQHz</field>
+<field type="numeric(11,5)">TLdB</field>
+</table>
+<table name="help">
+<field type="longblob">帮助文档</field>
+</table>
+<table name="users">
+<field type="varchar(30)">用户编号</field>
+<field type="varchar(30)">用户名称</field>
+<field type="varchar(30)">密码</field>
+<field type="varchar(10)">用户级别</field>
+</table>
+</database>
