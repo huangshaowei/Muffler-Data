@@ -8,7 +8,7 @@ class MyDataModel:
         self.node = None
         self.tables = None
         curstom_field = []
-        
+
     def Parser(self,data):
         if data == None:
             return
@@ -56,6 +56,12 @@ class MyDataModel:
     def getAllRecored(self):
         sqlword="select * from "+self.__name__
         return MySQLOperation.mysql_exec_res_all(sqlword)
+    def getAllRecoredWithOneFiled(self):
+        sqlword="call getAllRecordWithOneField('%s','%s')"%(self.curstom_field[0],self.__name__)
+        return MySQLOperation.mysql_exec_res_all(sqlword)
+    def getAllRecoredWithFuzzyQuery(self,part):
+        sqlword="call proc_fuzzyQuery('%s','%s','%s')"%(part,self.curstom_field[0],self.__name__)
+        return MySQLOperation.mysql_exec_res_all(sqlword)
     def updateOneReCord(self,index,attrData):
         try:
             sqlword="update "+ self.__name__+" set "
@@ -67,5 +73,4 @@ class MyDataModel:
                     sqlword +=' where id=%d'%(index)
         except Exception,e:
             QtGui.QMessageBox.about(None,"about sqlword",str(e))
-        print sqlword
         MySQLOperation.mysql_exec(sqlword)

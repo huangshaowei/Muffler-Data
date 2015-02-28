@@ -40,7 +40,7 @@ def mysql_exec(sqlquery):
        cur.execute(sqlquery)
        conn.commit()
    except Exception,e:
-       #QtGui.QMessageBox.about(None,"about mysql execute",str(e))
+       QtGui.QMessageBox.about(None,"about mysql execute",str(e))
        del cur
 
 
@@ -49,7 +49,39 @@ def find(model,index):
    sqlquery = "select * from " + model.attr['name'] + "where id = " + str(index)
    return mysql_exec_res(sqlquery)
 
+def createprocedure():
+    sqlquery = "CREATE procedure getAllRecordWithOneField(IN p_in_field varchar(64),IN p_in_table varchar(64)) \
+    begin \
+    set @sqlcmd = concat('select `',p_in_field,'` from ',p_in_table);\
+    prepare stmt from @sqlcmd;\
+    execute stmt; \
+    deallocate prepare stmt;\
+    end;"
+    try:
+        mysql_exec(sqlquery)
+    except Exception,e:
+        QtGui.QMessageBox.about(None,"about mysql execute",str(e))
 
+def createFuzzyQuerryProc():
+    sqlquery = """create procedure proc_fuzzyQuery(IN p_in_part varchar(64),IN p_in_field varchar(64),IN p_in_table varchar(64)) \
+    begin \
+    set @sqlcmd = concat('select `',p_in_field,'` from ',p_in_table,' where `',p_in_field,'` like "',p_in_part,'%"');\
+    prepare stmt from @sqlcmd;\
+    execute stmt; \
+    deallocate prepare stmt;\
+    end;"""
+    try:
+        mysql_exec(sqlquery)
+    except Exception,e:
+        QtGui.QMessageBox.about(None,"about mysql execute",str(e))
+        
+def CreateAdminUser(name,passwd):
+    try:
+        sqlquery = "insert into users values(id,'admin','"+name+"','"+encryption(passwd)+"','admin')"
+        QtGui.QMessageBox.about(None,"about mysql execute",sqlquery)
+        mysql_exec(sqlquery)
+    except Exception,e:
+        QtGui.QMessageBox.about(None,"about mysql execute",str(e))
 
 def save(model,target=None,index=None):
     if target:
@@ -60,13 +92,13 @@ def save(model,target=None,index=None):
         sqlquery = u"update %s set %s  where id= %s"%(model.attr['name'],tem,str(index))
         mysql_exec(sqlquery)
         return
-    sqlquery = "create table %s(id int primary key auto_increment,%s) engine=InnoDB default charset=utf8"%(model.__name__,"".join(model.attr)[:-1])
+    sqlquery = "create table if not exists %s(id int primary key auto_increment,%s) engine=InnoDB default charset=utf8"%(model.__name__,"".join(model.attr)[:-1])
     #QtGui.QMessageBox.about(None,"about mysql execute",sqlquery)#for test
     mysql_exec(sqlquery)
 
 
 def initDatabase(model):
-    sqlquery = "create database `%s` default character set utf8;"%(model.attr['name'])
+    sqlquery = "create database if not exists `%s` default character set utf8;"%(model.attr['name'])
     mysql_exec(sqlquery)
     sqlquery="use `%s`"%(model.attr['name'])
     mysql_exec(sqlquery)

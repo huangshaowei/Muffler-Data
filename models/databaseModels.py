@@ -22,3 +22,7 @@ class Database(MyDataModel):
      def save(self):
         MySQLOperation.initDatabase(self)
         self._successor.save()
+        MySQLOperation.createFuzzyQuerryProc()
+        MySQLOperation.createprocedure()
+        ###create one admin user here
+        #MySQLOperation.CreateAdminUser('admin','red')

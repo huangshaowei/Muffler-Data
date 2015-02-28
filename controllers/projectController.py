@@ -1,8 +1,8 @@
 from .databaseController import *
+from .userController import *
 
 class ProjectController(DatabaseController):
     def __init__(self):# signal and slot
-        DatabaseController.__init__(self)
         self.projectModel = self.getOwnModel("projects")
         self.projectView = QtGui.QDialog()
         self.setupView(self.projectView,Ui_Para_Project_Add_Dlg)
@@ -14,15 +14,15 @@ class ProjectController(DatabaseController):
         self.current_value=None
         pass
     def show(self):
-        self.projectView.show()
+        self.projectView.exec_()
         pass
     def beforeAdd(self):
+        
         pass
     def addData(self):
         self.current_value= self.getCurrentValue()
         self.projectModel.addNewRecord(self.current_value)
         pass
-        
     def ConnectSlot(self,win):
         self.SConnectS(win.ui.btn_cancel,"clicked()",win.reject)
         self.SConnectS(win.ui.btn_ok,"clicked()",self.Add)

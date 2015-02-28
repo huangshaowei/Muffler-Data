@@ -9,20 +9,26 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+mol = None
+
 #####################
 class DatabaseController(MyDataOperation):
     def __init__(self):
         self.Initialize()
         pass
     def Initialize(self):
-        self.mol = ModelsManager(os.getcwd()+"\\..\\Mod\\Database\\MufflerData\\config\\database.xml")
-        self.mol.Establish()
+        global mol
+        mol = ModelsManager(os.getcwd()+"\\..\\Mod\\Muffler\\MufflerData\\config\\database.xml")
+        mol.Establish()
     def getOwnModel(self,name):
         check_type(str,name)
-        return self.mol.getCorrespondenceModel(name)
+        global mol
+        self.model = mol.getCorrespondenceModel(name)
+        return self.model
     def setupView(self,ownview,Ui_View):
         ownview.ui = Ui_View()
         ownview.ui.setupUi(ownview)
+        self.view = ownview
     def SConnectS(self,ui,signal,slot):
         QtCore.QObject.connect(ui,QtCore.SIGNAL(_fromUtf8(signal)),slot)
     def readValueFromFile(self,ui):
@@ -44,3 +50,12 @@ class DatabaseController(MyDataOperation):
         for ui in self.lineFiles:
             current_value +=self.readValueFromFile(ui)
         return current_value
+    def getAllRecord(self):
+        return self.model.getAllRecored()
+    def getAllRecoredWithOneFiled(self):
+        return [item[0] for item in self.model.getAllRecoredWithOneFiled()]
+    def getAllRecoredWithFuzzyQuery(self,part):
+        return [item[0] for item in self.model.getAllRecoredWithFuzzyQuery(str(part))]
+    def showWidget(self):
+        self.view.show()
+        

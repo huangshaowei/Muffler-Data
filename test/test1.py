@@ -23,6 +23,10 @@ def testModelsManager():
     testProject(user)
     
 
+def testManagerController():
+    M = ManagerController()
+    M.ViewPanel.show()
+
 
 def testProject(p):
     for attr in p.attr:

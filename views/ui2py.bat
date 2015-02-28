@@ -1,4 +1,4 @@
-@echo on
+@echo off
 setlocal enabledelayedexpansion
 set UI2PY="E:\Binary\FreeCAD_trunk\bin\Python27\Lib\site-packages\PyQt4\pyuic4.bat"
 for %%i in (*.ui) do (

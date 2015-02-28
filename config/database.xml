@@ -139,7 +139,7 @@
 <table name="users">
 <field type="varchar(30)">用户编号</field>
 <field type="varchar(30)">用户名称</field>
-<field type="varchar(30)">密码</field>
+<field type="text">密码</field>
 <field type="varchar(10)">用户级别</field>
 </table>
 </database>
