@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerPanel_Para_4_MotoType_Add.ui'
 #
-# Created: Fri Feb 27 10:56:45 2015
+# Created: Fri Mar 06 11:16:41 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_Para_MotoType_Add_Dlg(object):
         Para_MotoType_Add_Dlg.setMaximumSize(QtCore.QSize(400, 450))
         Para_MotoType_Add_Dlg.setModal(False)
         self.lineEdit1 = QtGui.QLineEdit(Para_MotoType_Add_Dlg)
-        self.lineEdit1.setEnabled(False)
+        self.lineEdit1.setEnabled(True)
         self.lineEdit1.setGeometry(QtCore.QRect(160, 20, 171, 20))
         self.lineEdit1.setObjectName(_fromUtf8("lineEdit1"))
         self.btn_ok = QtGui.QPushButton(Para_MotoType_Add_Dlg)
@@ -138,6 +138,20 @@ class Ui_Para_MotoType_Add_Dlg(object):
 
         self.retranslateUi(Para_MotoType_Add_Dlg)
         QtCore.QMetaObject.connectSlotsByName(Para_MotoType_Add_Dlg)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit1, self.lineEdit2)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit2, self.lineEdit3)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit3, self.lineEdit4)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit4, self.lineEdit5)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit5, self.lineEdit6)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit6, self.lineEdit7)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit7, self.lineEdit8)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit8, self.lineEdit9)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit9, self.lineEdit10)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit10, self.lineEdit11)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit11, self.lineEdit12)
+        Para_MotoType_Add_Dlg.setTabOrder(self.lineEdit12, self.btn_ok)
+        Para_MotoType_Add_Dlg.setTabOrder(self.btn_ok, self.btn_cancel)
+        Para_MotoType_Add_Dlg.setTabOrder(self.btn_cancel, self.btn_help)
 
     def retranslateUi(self, Para_MotoType_Add_Dlg):
         Para_MotoType_Add_Dlg.setWindowTitle(_translate("Para_MotoType_Add_Dlg", "添加车型信息", None))

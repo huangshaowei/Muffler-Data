@@ -10,7 +10,7 @@
 <field type="varchar(30)">制动系统型式</field>
 <field type="varchar(30)">消声器布局型式</field>
 <field type="varchar(20)">排放标准</field>
-<field type="varchar(10)">长\宽\高(mm)</field>  
+<field type="varchar(10)">长宽高(mm)</field>  
 <field type="varchar(10)">轴距(mm)</field>
 <field type="varchar(10)">轮距(mm)</field>
 </table>

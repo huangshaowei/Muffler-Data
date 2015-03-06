@@ -24,5 +24,6 @@ class Database(MyDataModel):
         self._successor.save()
         MySQLOperation.createFuzzyQuerryProc()
         MySQLOperation.createprocedure()
+        MySQLOperation.createAttrQueryProc()
         ###create one admin user here
         #MySQLOperation.CreateAdminUser('admin','red')

@@ -39,9 +39,11 @@ def mysql_exec(sqlquery):
        cur = conn.cursor()
        cur.execute(sqlquery)
        conn.commit()
+       return True
    except Exception,e:
        QtGui.QMessageBox.about(None,"about mysql execute",str(e))
        del cur
+       return False
 
 
 def find(model,index):
@@ -74,7 +76,21 @@ def createFuzzyQuerryProc():
         mysql_exec(sqlquery)
     except Exception,e:
         QtGui.QMessageBox.about(None,"about mysql execute",str(e))
-        
+
+def createAttrQueryProc():
+    sqlquery = """ create procedure proc_attrQuery(IN p_in_attrs varchar(200),IN p_in_condition varchar(64),IN p_in_table varchar(64))
+    begin \
+    set @sqlcmd = concat('select ',p_in_attrs,' from ',p_in_table,' where ',p_in_condition); \
+    prepare stmt from @sqlcmd; \
+    execute stmt; \
+    deallocate prepare stmt;\
+    end;
+    """
+    try:
+        mysql_exec(sqlquery)
+    except Exception,e:
+        QtGui.QMessageBox.about(None,"about mysql execute",str(e))
+
 def CreateAdminUser(name,passwd):
     try:
         sqlquery = "insert into users values(id,'admin','"+name+"','"+encryption(passwd)+"','admin')"

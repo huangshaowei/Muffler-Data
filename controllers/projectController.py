@@ -7,24 +7,33 @@ class ProjectController(DatabaseController):
         self.projectView = QtGui.QDialog()
         self.setupView(self.projectView,Ui_Para_Project_Add_Dlg)
         self.ConnectSlot(self.projectView)
-        self.lineEdits=[self.projectView.ui.lineEdit1,self.projectView.ui.lineEdit2,self.projectView.ui.lineEdit3,
-                        self.projectView.ui.lineEdit4,self.projectView.ui.lineEdit5,self.projectView.ui.lineEdit6,
-                        self.projectView.ui.lineEdit7] #text
-        self.lineFiles=[self.projectView.ui.lineEdit8,self.projectView.ui.lineEdit9] #file for read
+        self.textEdits=[1,2,3,4,5,6,7] #text
+        self.lineFiles=[8,9] #file for read
+        self.lineEditsDNEnabled = [ 1,5,6] #lineEdit can't be change in update
+        self.lineEditsCompleter = {3:"models"} #lineEdit can complete the text
+        self.selectablefield = [1,2,3,4,5]
         self.current_value=None
+        self.lineEdits= self.getAllLineEdits(self.projectView)
         pass
-    def show(self):
-        self.projectView.exec_()
-        pass
+    def initializeView(self):
+        for t in self.lineEdits:
+            t.clear()
+        self.lineEdits[self.textEdits[4]].setText(self.getUserController().userModel.current_user.name)
+        self.lineEdits[self.textEdits[5]].setText(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())))
     def beforeAdd(self):
-        
-        pass
-    def addData(self):
-        self.current_value= self.getCurrentValue()
-        self.projectModel.addNewRecord(self.current_value)
+        if not self.check_empty([1,2,5]):
+            return False
+        if not self.check_integer([5]):
+            return False
+        self.projectView.accept()
+        return True
+    def generate(self):
+        self.lineEdits[self.textEdits[0]-1].setText("LH-1-4-1")
         pass
     def ConnectSlot(self,win):
         self.SConnectS(win.ui.btn_cancel,"clicked()",win.reject)
         self.SConnectS(win.ui.btn_ok,"clicked()",self.Add)
         self.SConnectS(win.ui.btn_help,"clicked()",self.help)
-        
+        self.SConnectS(win.ui.btn_generate,"clicked()",self.generate)
+        self.SConnectS(win.ui.btn_lineEdit8,"clicked()",lambda:self.fileDialogOpen(win.ui.lineEdit8))
+        self.SConnectS(win.ui.btn_lineEdit9,"clicked()",lambda:self.fileDialogOpen(win.ui.lineEdit9))

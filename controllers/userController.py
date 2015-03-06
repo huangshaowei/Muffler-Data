@@ -9,7 +9,8 @@ class UserController(DatabaseController):
         self.ConnectSlot(self.loginView)
         self.AddUserView = QtGui.QDialog()
         self.setupView(self.AddUserView,Ui_System_User_Add_Dlg)
-        self.registerAuthrityFun(self.check_authority)
+        self.registerUserController(self)
+        self.lineEditsCompleter = None
     def login(self):
         name = {'field':self.userModel.curstom_field[self.userModel.name_field_num],'value':str(self.loginView.ui.lineEdit1.text())}
         passwd = {'field':self.userModel.curstom_field[self.userModel.passwd_field_num],'value':str(self.loginView.ui.lineEdit2.text())}
