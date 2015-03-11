@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerPanel_Para_5_Engine_Add.ui'
 #
-# Created: Fri Mar 06 11:16:41 2015
+# Created: Tue Mar 10 16:28:18 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_Para_Engine_Add_Dlg(object):
         Para_Engine_Add_Dlg.setMaximumSize(QtCore.QSize(916, 450))
         Para_Engine_Add_Dlg.setModal(False)
         self.lineEdit1 = QtGui.QLineEdit(Para_Engine_Add_Dlg)
-        self.lineEdit1.setEnabled(False)
+        self.lineEdit1.setEnabled(True)
         self.lineEdit1.setGeometry(QtCore.QRect(130, 30, 141, 20))
         self.lineEdit1.setObjectName(_fromUtf8("lineEdit1"))
         self.btn_ok = QtGui.QPushButton(Para_Engine_Add_Dlg)
@@ -258,6 +258,35 @@ class Ui_Para_Engine_Add_Dlg(object):
 
         self.retranslateUi(Para_Engine_Add_Dlg)
         QtCore.QMetaObject.connectSlotsByName(Para_Engine_Add_Dlg)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit1, self.lineEdit2)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit2, self.lineEdit3)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit3, self.lineEdit4)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit4, self.lineEdit5)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit5, self.lineEdit6)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit6, self.lineEdit7)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit7, self.lineEdit8)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit8, self.lineEdit9)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit9, self.lineEdit10)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit10, self.lineEdit11)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit11, self.lineEdit12)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit12, self.lineEdit13)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit13, self.lineEdit14)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit14, self.lineEdit15)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit15, self.lineEdit16)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit16, self.lineEdit17)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit17, self.lineEdit18)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit18, self.lineEdit19)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit19, self.lineEdit20)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit20, self.lineEdit21)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit21, self.lineEdit22)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit22, self.lineEdit23)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit23, self.lineEdit24)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit24, self.lineEdit25)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit25, self.lineEdit26)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit26, self.lineEdit27)
+        Para_Engine_Add_Dlg.setTabOrder(self.lineEdit27, self.btn_ok)
+        Para_Engine_Add_Dlg.setTabOrder(self.btn_ok, self.btn_cancel)
+        Para_Engine_Add_Dlg.setTabOrder(self.btn_cancel, self.btn_help)
 
     def retranslateUi(self, Para_Engine_Add_Dlg):
         Para_Engine_Add_Dlg.setWindowTitle(_translate("Para_Engine_Add_Dlg", "添加发动机信息", None))

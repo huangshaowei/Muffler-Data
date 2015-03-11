@@ -1,4 +1,4 @@
-from ..lib import myxmlparser
+from ..lib import *
 from ..mysql import MySQLOperation
 from ..tools import *
 import MySQLdb

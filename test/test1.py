@@ -8,7 +8,7 @@ def run():
         car = CarModels(user)
         project = Projects(car)
         database = Database(project)
-        database.Parser(os.getcwd()+"\\..\\Mod\\Database\\MufflerData\\config\\database.xml")
+        database.Parser(os.getcwd()+"\\..\\Mod\\Muffler\\MufflerData\\config\\database.xml")
         database.initialise()
     except Exception,e:
         print e

@@ -2,8 +2,15 @@ from .carModels import *
 from .projectModels import *
 from .databaseModels import *
 from .userModels import *
+from .enginesModels import *
+from .catalystsModels import *
+from .dataModels import *
+from .exhaustsModels import *
+from .mufflersModels import *
+from .plansModels import *
+from .schemesModel import *
 
-Models=[Users,CarModels,Projects]
+Models=[Users,Mufflers,Exhausts,Datas,Catalysts,Engines,CarModels, Plans,Schemes,Projects]
 
 ################class MyModels manager the Models' establish and use ############
 class ModelsManager:

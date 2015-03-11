@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerDataPanel.ui'
 #
-# Created: Fri Mar 06 11:16:40 2015
+# Created: Tue Mar 10 16:28:17 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,8 +34,11 @@ class Ui_MufflerDataPanel(object):
         MufflerDataPanel.setSizePolicy(sizePolicy)
         MufflerDataPanel.setMinimumSize(QtCore.QSize(380, 440))
         MufflerDataPanel.setMaximumSize(QtCore.QSize(380, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        MufflerDataPanel.setFont(font)
         self.tabWidget = QtGui.QTabWidget(MufflerDataPanel)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 20, 361, 391))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 30, 361, 391))
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
@@ -54,6 +57,7 @@ class Ui_MufflerDataPanel(object):
         self.comboBox.setObjectName(_fromUtf8("comboBox"))
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.setItemText(0, _fromUtf8(""))
+        self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
@@ -134,6 +138,9 @@ class Ui_MufflerDataPanel(object):
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
         self.treeView = QtGui.QTreeView(self.tab_2)
         self.treeView.setGeometry(QtCore.QRect(0, 0, 361, 331))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.treeView.setFont(font)
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeView.setObjectName(_fromUtf8("treeView"))
         self.pushButton_5 = QtGui.QPushButton(self.tab_2)
@@ -154,12 +161,13 @@ class Ui_MufflerDataPanel(object):
         MufflerDataPanel.setWindowTitle(_translate("MufflerDataPanel", "MufflerData", None))
         self.label.setText(_translate("MufflerDataPanel", "选择需要查询的内容", None))
         self.comboBox.setItemText(1, _translate("MufflerDataPanel", "项目信息", None))
-        self.comboBox.setItemText(2, _translate("MufflerDataPanel", "子方案信息", None))
-        self.comboBox.setItemText(3, _translate("MufflerDataPanel", "消声器信息", None))
-        self.comboBox.setItemText(4, _translate("MufflerDataPanel", "车型信息", None))
-        self.comboBox.setItemText(5, _translate("MufflerDataPanel", "发动机信息", None))
-        self.comboBox.setItemText(6, _translate("MufflerDataPanel", "排气歧管信息", None))
-        self.comboBox.setItemText(7, _translate("MufflerDataPanel", "催化器信息", None))
+        self.comboBox.setItemText(2, _translate("MufflerDataPanel", "方案信息", None))
+        self.comboBox.setItemText(3, _translate("MufflerDataPanel", "子方案信息", None))
+        self.comboBox.setItemText(4, _translate("MufflerDataPanel", "消声器信息", None))
+        self.comboBox.setItemText(5, _translate("MufflerDataPanel", "车型信息", None))
+        self.comboBox.setItemText(6, _translate("MufflerDataPanel", "发动机信息", None))
+        self.comboBox.setItemText(7, _translate("MufflerDataPanel", "排气歧管信息", None))
+        self.comboBox.setItemText(8, _translate("MufflerDataPanel", "催化器信息", None))
         self.label_2.setText(_translate("MufflerDataPanel", "=", None))
         self.comboBox5.setItemText(0, _translate("MufflerDataPanel", "AND", None))
         self.comboBox5.setItemText(1, _translate("MufflerDataPanel", "OR", None))

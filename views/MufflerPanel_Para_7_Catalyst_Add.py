@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerPanel_Para_7_Catalyst_Add.ui'
 #
-# Created: Fri Mar 06 11:16:41 2015
+# Created: Tue Mar 10 16:28:19 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_Para_Catalyst_Add_Dlg(object):
         Para_Catalyst_Add_Dlg.setMaximumSize(QtCore.QSize(381, 355))
         Para_Catalyst_Add_Dlg.setModal(False)
         self.lineEdit1 = QtGui.QLineEdit(Para_Catalyst_Add_Dlg)
-        self.lineEdit1.setEnabled(False)
+        self.lineEdit1.setEnabled(True)
         self.lineEdit1.setGeometry(QtCore.QRect(120, 20, 171, 20))
         self.lineEdit1.setObjectName(_fromUtf8("lineEdit1"))
         self.btn_ok = QtGui.QPushButton(Para_Catalyst_Add_Dlg)
@@ -119,12 +119,16 @@ class Ui_Para_Catalyst_Add_Dlg(object):
         self.label2.setText(_translate("Para_Catalyst_Add_Dlg", "材料", None))
         self.label3.setText(_translate("Para_Catalyst_Add_Dlg", "截面积", None))
         self.label5.setText(_translate("Para_Catalyst_Add_Dlg", "实体图", None))
+        self.lineEdit5.setToolTip(_translate("Para_Catalyst_Add_Dlg", "lineFiles", None))
         self.label6.setText(_translate("Para_Catalyst_Add_Dlg", "GT图", None))
+        self.lineEdit6.setToolTip(_translate("Para_Catalyst_Add_Dlg", "lineFiles", None))
         self.btn_lineEdit5.setText(_translate("Para_Catalyst_Add_Dlg", "浏览", None))
         self.btn_lineEdit6.setText(_translate("Para_Catalyst_Add_Dlg", "浏览", None))
         self.btn_help.setText(_translate("Para_Catalyst_Add_Dlg", "帮助", None))
         self.label7.setText(_translate("Para_Catalyst_Add_Dlg", "三维UG数模", None))
         self.btn_lineEdit7.setText(_translate("Para_Catalyst_Add_Dlg", "浏览", None))
+        self.lineEdit7.setToolTip(_translate("Para_Catalyst_Add_Dlg", "lineFiles", None))
         self.label4.setText(_translate("Para_Catalyst_Add_Dlg", "尺寸信息图", None))
         self.btn_lineEdit4.setText(_translate("Para_Catalyst_Add_Dlg", "浏览", None))
+        self.lineEdit4.setToolTip(_translate("Para_Catalyst_Add_Dlg", "lineFiles", None))
 

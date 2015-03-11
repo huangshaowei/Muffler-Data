@@ -288,6 +288,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>lineFiles</string>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -355,6 +358,9 @@
      <width>221</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>lineFiles</string>
    </property>
    <property name="text">
     <string/>

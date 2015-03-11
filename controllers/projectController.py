@@ -6,29 +6,28 @@ class ProjectController(DatabaseController):
         self.projectModel = self.getOwnModel("projects")
         self.projectView = QtGui.QDialog()
         self.setupView(self.projectView,Ui_Para_Project_Add_Dlg)
-        self.ConnectSlot(self.projectView)
-        self.textEdits=[1,2,3,4,5,6,7] #text
-        self.lineFiles=[8,9] #file for read
+        self.textEdits=[1,2,3,4,5,6,7] #text your want in the attributewidget
         self.lineEditsDNEnabled = [ 1,5,6] #lineEdit can't be change in update
         self.lineEditsCompleter = {3:"models"} #lineEdit can complete the text
-        self.selectablefield = [1,2,3,4,5]
-        self.current_value=None
-        self.lineEdits= self.getAllLineEdits(self.projectView)
+        self.selectablefield = [1,2,3,4,5]  #use in the combox
         pass
     def initializeView(self):
         for t in self.lineEdits:
             t.clear()
-        self.lineEdits[self.textEdits[4]].setText(self.getUserController().userModel.current_user.name)
-        self.lineEdits[self.textEdits[5]].setText(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())))
+        #self.testinputWidget() #user the test the order of inputwidgets
+        self.lineEdits[5].setText(self.getUserController().userModel.current_user.name)
+        self.lineEdits[6].setText(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())))
     def beforeAdd(self):
         if not self.check_empty([1,2,5]):
             return False
         if not self.check_integer([5]):
             return False
-        self.projectView.accept()
+        if not self.check_primary(1):
+            return False
+        #self.projectView.accept()
         return True
     def generate(self):
-        self.lineEdits[self.textEdits[0]-1].setText("LH-1-4-1")
+        self.lineEdits[0].setText("LH-1-4-1")
         pass
     def ConnectSlot(self,win):
         self.SConnectS(win.ui.btn_cancel,"clicked()",win.reject)

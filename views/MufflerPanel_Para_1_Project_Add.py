@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerPanel_Para_1_Project_Add.ui'
 #
-# Created: Fri Mar 06 11:16:40 2015
+# Created: Tue Mar 10 16:28:17 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -152,9 +152,11 @@ class Ui_Para_Project_Add_Dlg(object):
         self.label7.setText(_translate("Para_Project_Add_Dlg", "录入时间", None))
         self.label8.setText(_translate("Para_Project_Add_Dlg", "SOR", None))
         self.label9.setText(_translate("Para_Project_Add_Dlg", "GT模型", None))
+        self.lineEdit8.setToolTip(_translate("Para_Project_Add_Dlg", "lineFiles", None))
         self.btn_lineEdit8.setText(_translate("Para_Project_Add_Dlg", "浏览", None))
         self.btn_lineEdit9.setText(_translate("Para_Project_Add_Dlg", "浏览", None))
         self.btn_help.setText(_translate("Para_Project_Add_Dlg", "帮助", None))
         self.btn_generate.setText(_translate("Para_Project_Add_Dlg", "生成", None))
+        self.lineEdit9.setToolTip(_translate("Para_Project_Add_Dlg", "lineFiles", None))
         self.label7_2.setText(_translate("Para_Project_Add_Dlg", "录入人", None))
 

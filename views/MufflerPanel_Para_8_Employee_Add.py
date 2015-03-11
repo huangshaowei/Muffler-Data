@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'G:\freecad-8-26-all-success\Mod\Muffler\MufflerData\views\MufflerPanel_Para_8_Employee_Add.ui'
 #
-# Created: Fri Mar 06 11:16:41 2015
+# Created: Tue Mar 10 16:28:19 2015
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_Para_Employee_Add_Dlg(object):
         Para_Employee_Add_Dlg.setMaximumSize(QtCore.QSize(371, 341))
         Para_Employee_Add_Dlg.setModal(False)
         self.lineEdit1 = QtGui.QLineEdit(Para_Employee_Add_Dlg)
-        self.lineEdit1.setEnabled(False)
+        self.lineEdit1.setEnabled(True)
         self.lineEdit1.setGeometry(QtCore.QRect(140, 30, 171, 20))
         self.lineEdit1.setObjectName(_fromUtf8("lineEdit1"))
         self.btn_ok = QtGui.QPushButton(Para_Employee_Add_Dlg)

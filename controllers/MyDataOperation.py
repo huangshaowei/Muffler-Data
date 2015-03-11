@@ -41,6 +41,10 @@ class MyDataOperation:
         if not self.afterDelete():
             return 
         self.reflesh()
+    def importData(self):
+        if not self.CheckCurrentUser():
+            return 
+        self.importMufflerData()
     def select(self,condition=None):#condition is dirt
         if not condition:
             condition = self.beforeSelect()
@@ -51,40 +55,40 @@ class MyDataOperation:
     def create(self):
         pass
     def beforeAdd(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:beforeAdd")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:beforeAdd")
         return True
     def addData(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:addData")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:addData")
         return True
     def afterAdd(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:afterAdd")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:afterAdd")
         return True
     def beforeUpdate(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:addData")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:addData")
         return True
     def updateData(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:updateData")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:updateData")
         return True
     def afterUpdate(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:afterUpdate")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:afterUpdate")
         return True
     def beforeDelete(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:beforDelete")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:beforDelete")
         return True
     def deleteData(self ,num):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:deleteData")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:deleteData")
         return True
     def afterDelete(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:afterDelete")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:afterDelete")
         return True
     def beforeSelect(self):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:beforeselect")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:beforeselect")
         return True
     def SelectData(self,condition):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:selectData")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:selectData")
         return True
     def afterSelect(self,res):
-        QtGui.QMessageBox.about(None,"about","MyDataOperation:afterSelect")
+        #QtGui.QMessageBox.about(None,"about","MyDataOperation:afterSelect")
         return True
     def registerUserController(self,controller):
         global MyUserController
@@ -98,20 +102,37 @@ class MyDataOperation:
     def help(self):
         os.startfile(sys.path[0]+"\\Database\\images\\help.doc")
     def fileDialogOpen(self,ui):
-        FDialog = QtGui.QFileDialog()
-        filename = FDialog.getOpenFileName(None,"file name","./","Allfile(*.*)")
-        ui.setText(filename)
+        try:
+            FDialog = QtGui.QFileDialog()
+            filename = FDialog.getOpenFileName(None,"file name","./","Allfile(*.*)")
+            ui.setText(filename)
+        except Exception,e:
+            QtGui.QMessageBox.about(None,"about",str(e))
     def reflesh(self):
         pass 
     def check_empty(self,nums):
         for num in nums:
-            if not self.lineEdits[self.textEdits[num-1]-1].text():
-                QtGui.QMessageBox.about(None,"about sqlword",self.projectModel.curstom_field[num-1]+" is empty!")
-                return False
+            if self.lineEdits[num-1].__class__ == QtGui.QLineEdit:
+                if not self.lineEdits[num-1].text():
+                    QtGui.QMessageBox.about(None,"about empty",self.model.curstom_field[num-1]+" is empty!")
+                    return False
+            elif self.lineEdits[num-1].__class__ == QtGui.QComboBox:
+                if self.lineEdits[num -1 ].currentIndex() == 0:
+                    QtGui.QMessageBox.about(None,"about empty",self.model.curstom_field[num-1]+" is empty!")
+                    return False
         return True
     def check_integer(self,nums):
         for num in nums:
-            if not self.lineEdits[self.textEdits[num-1]-1].text().toInt()[1]:
-                QtGui.QMessageBox.about(None,"about sqlword",self.projectModel.curstom_field[num-1]+" has to write integer!")
-                return False 
+            if self.lineEdits[num-1].__class__ == QtGui.QLineEdit:
+                if self.lineEdits[num-1].text().isEmpty():
+                    continue
+                if not self.lineEdits[num-1].text().toInt()[1]:
+                    QtGui.QMessageBox.about(None,"about integer",self.model.curstom_field[num-1]+" has to write integer!")
+                    return False 
+            elif self.lineEdits[num-1].__class__ == QtGui.QComboBox:
+                if self.lineEdits[num-1].currentText().isEmpty():
+                    continue
+                if not self.lineEdits[num-1].currentText().toInt()[1]:
+                    QtGui.QMessageBox.about(None,"about integer",self.model.curstom_field[num-1]+" has to write integer!")
+                    return False
         return True 

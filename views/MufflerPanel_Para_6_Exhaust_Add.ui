@@ -30,7 +30,7 @@
   </property>
   <widget class="QLineEdit" name="lineEdit1">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -166,6 +166,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>lineFiles</string>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -194,6 +197,9 @@
      <width>171</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>lineFiles</string>
    </property>
    <property name="text">
     <string/>
@@ -275,6 +281,9 @@
      <width>171</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>lineFiles</string>
    </property>
    <property name="text">
     <string/>

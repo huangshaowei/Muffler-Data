@@ -11,4 +11,6 @@ from .MufflerPanel_System_1_User_Add import *
 from .MufflerPanel_System_2_Password import *
 from .MufflerPanel_System_3_Background import *
 from .MufflerPanel_System_1_User_login import *
+from .MufflerPanel_Para_2_Schemes_Add import *
+from .MufflerPanel_Para_3_MufflerData_Add import *
 from .MufflerDataPanel import *

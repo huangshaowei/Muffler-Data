@@ -78,7 +78,7 @@ def createFuzzyQuerryProc():
         QtGui.QMessageBox.about(None,"about mysql execute",str(e))
 
 def createAttrQueryProc():
-    sqlquery = """ create procedure proc_attrQuery(IN p_in_attrs varchar(200),IN p_in_condition varchar(64),IN p_in_table varchar(64))
+    sqlquery = """ create procedure proc_attrQuery(IN p_in_attrs varchar(2000),IN p_in_condition varchar(64),IN p_in_table varchar(64))
     begin \
     set @sqlcmd = concat('select ',p_in_attrs,' from ',p_in_table,' where ',p_in_condition); \
     prepare stmt from @sqlcmd; \

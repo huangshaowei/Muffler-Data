@@ -3,26 +3,34 @@ from PyQt4 import QtGui,QtCore
 from .projectController import ProjectController
 from .userController import UserController
 from .carModelController import CarModelController
+from .exhaustsController import ExhaustsController
+from .employeesController import EmployeesController
+from .mufflersController import MufflersController
+from .enginesController import EnginesController
+from .catalystsController import CatalystsController
+from .plansController import PlansController
+from .schemesController import SchemesModelController
 from .databaseController import *
-
+import os
 controllers = [UserController,ProjectController,CarModelController]
 
 class ManagerController(DatabaseController):
     def __init__(self):
         self.ViewPanel = QtGui.QDockWidget()
+        self.attributeModel  = QtGui.QStandardItemModel()
         self.setupView(self.ViewPanel,Ui_MufflerDataPanel)
-        self.instanceOfControllers  = { 0:UserController(),1: ProjectController(),2:CarModelController()}
+        self.instanceOfControllers  = { 0:UserController(),1: ProjectController(),2:SchemesModelController(),3:PlansController(),4:MufflersController(),5:CarModelController(),6:EnginesController(),7:ExhaustsController(),8:CatalystsController()}#,4:EmployeesController,6:EnginesController}
         self.currentItem = -1
         ####actions####
         self.delAction = QtGui.QAction('Delete',self.ViewPanel,triggered=self.delete)
         self.addAction = QtGui.QAction('Add',self.ViewPanel,triggered=self.Add)
         self.DetAction = QtGui.QAction('Detail',self.ViewPanel,triggered=self.show)
+        self.RefAction = QtGui.QAction('reflesh',self.ViewPanel,triggered=self.reflesh)
         ####end #######
         self.treeviewModel = QtGui.QStandardItemModel()
         self.ViewPanel.ui.treeView.setModel(self.treeviewModel)
         ##############
-        self.attributeWidget = None
-        self.attributeModel  = QtGui.QStandardItemModel()
+        self.attributeWidget = None 
         InitStandardItemModel(self.attributeModel)
         #self.attributeModel.setColumnCount(2)
         #self.attributeModel.setHorizontalHeaderLabels(['property','value'])
@@ -30,7 +38,6 @@ class ManagerController(DatabaseController):
         self.attributeListView.setModel(self.attributeModel)
         self.attributeListView.horizontalHeader().setStretchLastSection(True)
         self.selectedRow = None
-        self.ConnectSlot(self.ViewPanel)
         self.ConnectSlotBetweenControls()
     def registerAttributeWidget(self,widget):#widget with QListView
         self.attributeWidget = widget
@@ -101,31 +108,40 @@ class ManagerController(DatabaseController):
     def OnlvOpRighBtn(self,point):
         try:
             popupmenu = QtGui.QMenu(self.ViewPanel.ui.treeView)
+            #popupmenu.addAction(self.addAction)
             index = self.ViewPanel.ui.treeView.indexAt(point)
             if index.isValid():
                 model = self.ViewPanel.ui.treeView.model()
-                if model.itemFromIndex(index).parent():
-                    self.condition = model.itemFromIndex(index).parent().tag
-                else:
-                    self.condition = model.itemFromIndex(index).tag
+                self.condition = model.itemFromIndex(index).tag
                 popupmenu.addAction(self.delAction)
-            popupmenu.addAction(self.addAction)
-            popupmenu.addAction(self.DetAction)
+                if len(self.condition) > 2:
+                    popupmenu.addAction(self.DetAction)
+            actions = [self.addAction,self.RefAction]
+            actions += self.instanceOfControllers[self.currentItem].registerActions(self)
+            for action in actions:
+                popupmenu.addAction(action)
+            #popupmenu.addAction(self.RefAction)
             popupmenu.exec_(self.ViewPanel.ui.treeView.mapToGlobal(point))
         except Exception,e:
             QtGui.QMessageBox.about(None,"about res....",str(e))
     def itemChoosed(self,index):#index: QModelIndex
         #self.selectRow = index.row()
-        model = self.ViewPanel.ui.treeView.model()
-        if model.itemFromIndex(index).parent():
-            self.condition = model.itemFromIndex(index).parent().tag
-        else:
+        try:
+            model = self.ViewPanel.ui.treeView.model()
             self.condition = model.itemFromIndex(index).tag
-        self.ViewPanel.ui.pushButton_5.setEnabled(True)
-        self.initAttributeModel = True
-        self.instanceOfControllers[self.currentItem].setupAttributeListView(self.condition[1],self.attributeModel)
-        self.instanceOfControllers[self.currentItem].initializeAttributeListView(self.attributeModel)
-        self.initAttributeModel = False
+            if len(self.condition) > 2:
+                res = self.instanceOfControllers[self.currentItem].getFileRecordWithCondition(self.condition[1],self.condition[0])[0]
+                file = writeFilewithValue(res)
+                if file[0]:
+                    os.startfile(file[1])
+                return 
+            self.ViewPanel.ui.pushButton_5.setEnabled(True)
+            self.initAttributeModel = True
+            self.instanceOfControllers[self.currentItem].setupAttributeListView(self.condition[1],self.attributeModel)
+            self.instanceOfControllers[self.currentItem].initializeAttributeListView(self.attributeModel)
+            self.initAttributeModel = False
+        except Exception,e:
+            QtGui.QMessageBox.about(None,"about res....",str(e))
     def ConnectSlot(self,win):
         self.SConnectS(win.ui.comboBox,"currentIndexChanged(int)",self.subjectChange)
         self.SConnectS(win.ui.comboBox2,"currentIndexChanged(int)",self.subjectChange_combox2)
@@ -162,6 +178,7 @@ class ManagerController(DatabaseController):
         except Exception,e:
             QtGui.QMessageBox.about(None,"about res....",str(e))
     def show(self):
+            
         pass
     def beforeSelect(self):
         try:
